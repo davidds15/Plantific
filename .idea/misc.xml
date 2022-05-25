@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/drawable/gradient_background.xml" value="0.253" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/drawable/gradient_primary.xml" value="0.253" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/card_1.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/card_2.xml" value="0.536" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_history.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_profile.xml" value="0.16216216216216217" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_scan.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
+        <entry key="..\:/Programming/Projects/2022/Plantific/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.209" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/activity_login.xml" value="0.3822463768115942" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/activity_main.xml" value="0.3822463768115942" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/activity_register.xml" value="0.3822463768115942" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/card_1.xml" value="0.276268115942029" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/card_2.xml" value="0.67" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_detail.xml" value="0.5" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_history.xml" value="0.276268115942029" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_home.xml" value="0.276268115942029" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_profile.xml" value="0.276268115942029" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/layout/fragment_search.xml" value="0.33" />
+        <entry key="..\:/Users/dsugi/Documents/Plantific/app/src/main/res/menu/bottom_menu.xml" value="0.2015625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

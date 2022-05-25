@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation2"
+    app:startDestination="@id/itemHome">
+
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.ubaya.plantific.HomeFragment"
+        android:label="Welcome To Plantific"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+        <action
+            android:id="@+id/actionhometodetail"
+            app:destination="@id/itemDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemSearch"
+        android:name="com.ubaya.plantific.SearchFragment"
+        android:label="Search Plants"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+        <action
+            android:id="@+id/actionsearchtodetail"
+            app:destination="@id/itemDetail" />
+        <action
+            android:id="@+id/action_itemSearch_to_itemHome"
+            app:destination="@id/itemHome" />
+        <action
+            android:id="@+id/action_itemSearch_to_itemHistory"
+            app:destination="@id/itemHistory" />
+        <action
+            android:id="@+id/action_itemSearch_to_itemProfile"
+            app:destination="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemScan"
+        android:name="com.ubaya.plantific.ScanFragment"
+        android:label="Predict Your Plant"
+        tools:layout="@layout/fragment_scan">
+        <action
+            android:id="@+id/actionscantodetail"
+            app:destination="@id/itemDetail" />
+        <action
+            android:id="@+id/action_itemScan_to_itemHistory"
+            app:destination="@id/itemHistory" />
+        <action
+            android:id="@+id/action_itemScan_to_itemSearch"
+            app:destination="@id/itemSearch" />
+        <action
+            android:id="@+id/action_itemScan_to_itemProfile"
+            app:destination="@id/itemProfile" />
+        <action
+            android:id="@+id/action_itemScan_to_itemHome"
+            app:destination="@id/itemHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.plantific.HistoryFragment"
+        android:label="History of Prediction"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+        <action
+            android:id="@+id/action_itemHistory_to_itemDetail"
+            app:destination="@id/itemDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetail"
+        android:name="com.ubaya.plantific.DetailFragment"
+        android:label="Plant Detail"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+        <argument
+            android:name="idtanaman"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_itemDetail_to_itemProfile2"
+            app:destination="@id/itemProfile" />
+        <action
+            android:id="@+id/action_itemDetail_to_itemHistory"
+            app:destination="@id/itemHistory" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.plantific.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+        <action
+            android:id="@+id/action_itemProfile_to_itemHome"
+            app:destination="@id/itemHome" />
+    </fragment>
+</navigation>
