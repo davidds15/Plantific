@@ -126,7 +126,7 @@ class daftar_pustaka : Fragment() {
         "\n\nPecut Kuda : \n" +
                 "https://intip.in/PustakaPecutKuda1\n" +
                 "https://intip.in/PustakaPecutKuda2\n" +
-                "https://intip.in/PustakaPecutKuda3" +
+                "https://intip.in/PustakaPecutKuda3\n" +
                 "Utami, K., Sari, I., & N. (2019). PENGARUH PEMBERIAN TOPIKAL EKSTRAK ETANOL DAUN PECUT KUDA (Stachytarpheta jamaicensis (L.) Vahl) TERHADAP PENYEMBUHAN LUKA TERBUKA PADA PUNGGUNG MENCIT. CHEMICA: Jurnal Pendidikan Kimia Dan Ilmu Kimia, 2(1), 21–27." +
         "\n\nPepaya : \n" +
                 "https://intip.in/PustakaPepaya1\n" +
