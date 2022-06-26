@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     val pref = "userSession"
     val key_name = "key.name"
-    val key_email = "key.email"
     val key_id="key.id"
     lateinit var sharedPref : SharedPreferences
 

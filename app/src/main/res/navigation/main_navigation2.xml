@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/itemHome"
         android:name="com.ubaya.plantific.HomeFragment"
-        android:label="Welcome To Plantific"
+        android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/actToScan"
@@ -18,10 +18,10 @@
             app:destination="@id/itemDetail" />
     </fragment>
     <fragment
-        android:id="@+id/itemSearch"
+        android:id="@+id/itemInfo"
         android:name="com.ubaya.plantific.SearchFragment"
-        android:label="Search Plants"
-        tools:layout="@layout/fragment_search">
+        android:label="Panduan Foto"
+        tools:layout="@layout/fragment_info">
         <action
             android:id="@+id/actToScan"
             app:destination="@id/itemScan" />
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/itemScan"
         android:name="com.ubaya.plantific.ScanFragment"
-        android:label="Predict Your Plant"
+        android:label="Pengenalan Tanaman"
         tools:layout="@layout/fragment_scan">
         <action
             android:id="@+id/actionscantodetail"
@@ -51,18 +51,29 @@
             app:destination="@id/itemHistory" />
         <action
             android:id="@+id/action_itemScan_to_itemSearch"
-            app:destination="@id/itemSearch" />
+            app:destination="@id/itemInfo" />
         <action
             android:id="@+id/action_itemScan_to_itemProfile"
             app:destination="@id/itemProfile" />
         <action
             android:id="@+id/action_itemScan_to_itemHome"
             app:destination="@id/itemHome" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            android:defaultValue="mobilenet" />
+        <argument
+            android:name="threshold"
+            app:argType="string"
+            android:defaultValue="0.5" />
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
     </fragment>
     <fragment
         android:id="@+id/itemHistory"
         android:name="com.ubaya.plantific.HistoryFragment"
-        android:label="History of Prediction"
+        android:label="Riwayat "
         tools:layout="@layout/fragment_history">
         <action
             android:id="@+id/actToScan"
@@ -74,7 +85,7 @@
     <fragment
         android:id="@+id/itemDetail"
         android:name="com.ubaya.plantific.DetailFragment"
-        android:label="Plant Detail"
+        android:label="Detail Tanaman"
         tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/actToScan"
@@ -95,7 +106,7 @@
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.ubaya.plantific.ProfileFragment"
-        android:label="Profile"
+        android:label="Profil"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/actToScan"
@@ -103,5 +114,29 @@
         <action
             android:id="@+id/action_itemProfile_to_itemHome"
             app:destination="@id/itemHome" />
+        <action
+            android:id="@+id/profiletodaftarpustaka"
+            app:destination="@id/daftar_pustaka" />
+        <action
+            android:id="@+id/actprofiletosetting"
+            app:destination="@id/setting" />
+    </fragment>
+    <fragment
+        android:id="@+id/daftar_pustaka"
+        android:name="com.ubaya.plantific.daftar_pustaka"
+        android:label="Daftar Pustaka"
+        tools:layout="@layout/fragment_daftar_pustaka" >
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
+    </fragment>
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.ubaya.plantific.Setting"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/actToScan"
+            app:destination="@id/itemScan" />
     </fragment>
 </navigation>

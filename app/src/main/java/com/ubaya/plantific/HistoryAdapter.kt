@@ -24,8 +24,6 @@ class HistoryAdapter (val historys:ArrayList<History>): RecyclerView.Adapter<His
     override fun onBindViewHolder(holder: HistoryAdapter.PlaylistViewHolder, position: Int) {
         val url = historys[position].img_url
         Picasso.get().load(url).into(holder.v.imgDaunhistory)
-//        Log.d("apiresult", tanamans[position].namaTanaman)
-//        holder.v.txtNamaDaun.text="abc"
         holder.v?.txtTanggal.text = historys[position].datePredict
         holder.v?.txtResult.text = historys[position].hasilPredict
         holder.v.setOnClickListener{

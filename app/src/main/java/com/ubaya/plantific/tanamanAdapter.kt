@@ -30,11 +30,7 @@ class tanamanAdapter (val tanamans:ArrayList<Tanaman>): RecyclerView.Adapter<tan
     override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
         val url = tanamans[position].img_url
         Picasso.get().load(url).into(holder.v.imgDaun)
-//        Log.d("apiresult", tanamans[position].namaTanaman)
-//        holder.v.txtNamaDaun.text="abc"
         holder.v?.txtNamaDaun.text = tanamans[position].namaTanaman
-
-//        holder.v?.imgDaun.setImageResource(url)
         holder.v.setOnClickListener{
             val action = HomeFragmentDirections.actionhometodetail(tanamans[position].idTanaman.toString(),"0")
             Navigation.findNavController(holder.v).navigate(action)

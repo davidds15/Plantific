@@ -17,4 +17,7 @@
         <item name="colorPrimary">#00CF6A</item>
         <item name="android:textColorSecondary">@color/black</item>
     </style>
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
 </resources>

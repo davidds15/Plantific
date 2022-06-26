@@ -11,32 +11,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import androidx.navigation.Navigation
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import org.json.JSONObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     val pref = "userSession"
     val key_name = "key.name"
     val key_email = "key.email"
@@ -49,17 +43,11 @@ class ProfileFragment : Fragment() {
         edit.apply()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
     fun updateprofilename()
     {
         val q = Volley.newRequestQueue(activity)
-        val url =  "http://192.168.0.103/Plantific/updateprofilename.php"
+        val url =  "https://plantific.ifubaya.id/updateprofilename.php"
         var stringRequest = object : StringRequest(
             Request.Method.POST, url,
             Response.Listener {
@@ -106,24 +94,22 @@ class ProfileFragment : Fragment() {
     fun updateprofilepass()
     {
         val q = Volley.newRequestQueue(activity)
-        val url =  "http://192.168.0.103/Plantific/updateprofilepass.php"
+        val url =  "https://plantific.ifubaya.id/updateprofilepass.php"
         var stringRequest = object : StringRequest(
             Request.Method.POST, url,
             Response.Listener {
                 Log.d("cekparams", it)
                 val obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
-                    updateprofilename()
-                    var passupdate = v?.findViewById<TextInputEditText>(R.id.txtInputPassProfile)
                     val dialog = SweetAlertDialog(activity, SweetAlertDialog.SUCCESS_TYPE)
                     dialog.setTitleText("Success")
-                    dialog.setContentText("Password Berhasil Diupdate")
+                    dialog.setContentText("Profil Berhasil Diupdate")
                     dialog.setConfirmText("OK")
                     dialog.show()
                 } else {
                     val dialog = SweetAlertDialog(activity, SweetAlertDialog.ERROR_TYPE)
                     dialog.setTitleText("Failed")
-                    dialog.setContentText("Password Tidak Berhasil Diupdate")
+                    dialog.setContentText("Profil Tidak Berhasil Diupdate")
                     dialog.setConfirmText("OK")
                     dialog.show()
                 }
@@ -134,9 +120,10 @@ class ProfileFragment : Fragment() {
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 var idLogin = sharedPref.getString(key_id, "")
-                var passupdate = v?.findViewById<TextInputEditText>(R.id.txtInputPassProfile)
                 params["iduser"] = idLogin.toString()
                 params["password"] = txtInputPassProfile.text.toString()
+                params["name"] = txtInputNamaProfile.text.toString()
+                params["email"]=txtInputEmailProfile.text.toString()
                 return params
             }
         }
@@ -144,7 +131,7 @@ class ProfileFragment : Fragment() {
     }
     fun bacadata(){
         val q = Volley.newRequestQueue(activity)
-        val url =  "http://192.168.0.103/Plantific/bacaProfile.php"
+        val url =  "https://plantific.ifubaya.id/bacaProfile.php"
         var stringRequest = object : StringRequest(
             Request.Method.POST, url,
             Response.Listener {
@@ -154,10 +141,8 @@ class ProfileFragment : Fragment() {
                     val data = obj.getJSONArray("data")
                     for(i in 0 until data.length()) {
                         var data = data.getJSONObject(i)
-                        txtInputNamaProfile.setText(data.getString("name"))
-                        txtInputEmailProfile.setText(data.getString("email"))
-//                        val url = data.getString("image_url")
-//                        Picasso.get().load(url).into(imageViewGambar)
+                        txtInputNamaProfile?.setText(data.getString("name"))
+                        txtInputEmailProfile?.setText(data.getString("email"))
                     }
                 }
             },
@@ -182,19 +167,55 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         var v = inflater.inflate(R.layout.fragment_profile, container, false)
         sharedPref = requireActivity().getSharedPreferences(pref, Context.MODE_PRIVATE)
-        var name =sharedPref.getString(key_name,"")
-        var btnLogOut = v?.findViewById<Button>(R.id.btnLogout)
-        var btnSave=v?.findViewById<Button>(R.id.btnSave)
-        var inputpass=v?.findViewById<TextInputEditText>(R.id.txtInputPassProfile)
-        var confinputpass=v?.findViewById<TextInputEditText>(R.id.txtInputConfPass)
-        bacadata()
 
-        btnSave!!.setOnClickListener(){
-            if (inputpass != null) {
-                if(inputpass?.text.isNullOrEmpty()) {
-                    updateprofilename()
-                    }
-                else if(inputpass.getText().toString().equals(confinputpass?.getText().toString())){
+//        var btnLogOut = v?.findViewById<Button>(R.id.btnLogout)
+//        var btnSave=v?.findViewById<Button>(R.id.btnSave)
+//        var txtinputnama=v?.findViewById<TextInputEditText>(R.id.txtInputNamaProfile)
+//        var inputpass=v?.findViewById<TextInputEditText>(R.id.txtInputPassProfile)
+//        var confinputpass=v?.findViewById<TextInputEditText>(R.id.txtInputRePass)
+//        var txtnote=v?.findViewById<TextView>(R.id.txtnoteprofile)
+//        var txtinputemail=v?.findViewById<TextInputEditText>(R.id.txtInputEmailProfile)
+//        var txtinputlayoutemail=v?.findViewById<TextInputLayout>(R.id.textInputLayoutemail)
+//        var txtinputlayoutpass=v?.findViewById<TextInputLayout>(R.id.textInputLayoutpassword)
+//        var txtinputlayoutconfpass=v?.findViewById<TextInputLayout>(R.id.textInputLayoutconfpass)
+        bacadata()
+        var idLogin = sharedPref.getString(key_id, "")
+        if(idLogin=="0")
+        {
+            v.btnSave?.visibility=View.GONE
+            v.txtInputPassProfile?.visibility=View.GONE
+            v.txtInputEmailProfile?.visibility=View.GONE
+            v.txtInputRePass?.visibility=View.GONE
+            v.txtnoteprofile?.visibility=View.GONE
+            v.textInputLayoutemail?.visibility=View.GONE
+            v.textInputLayoutpassword?.visibility=View.GONE
+            v.textInputLayoutconfpass?.visibility=View.GONE
+            v.txtInputNamaProfile?.setEnabled(false)
+        }
+        else
+        {
+            v.btnSave?.visibility=View.VISIBLE
+            v.txtInputPassProfile?.visibility=View.VISIBLE
+            v.txtInputEmailProfile?.visibility=View.VISIBLE
+            v.txtInputRePass?.visibility=View.VISIBLE
+            v.txtnoteprofile?.visibility=View.VISIBLE
+            v.textInputLayoutemail?.visibility=View.VISIBLE
+            v.textInputLayoutpassword?.visibility=View.VISIBLE
+            v.textInputLayoutconfpass?.visibility=View.VISIBLE
+            v.txtInputNamaProfile?.setEnabled(true)
+        }
+
+        v.btnDaftarPustaka?.setOnClickListener(){
+            val action = ProfileFragmentDirections.profiletodaftarpustaka()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
+        }
+        v.btnsettingprofile?.setOnClickListener(){
+            val action = ProfileFragmentDirections.actprofiletosetting()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
+        }
+        v.btnSave?.setOnClickListener(){
+            if (v.txtInputPassProfile?.text.toString() != "") {
+                if(v.txtInputPassProfile?.text.toString() ==v.txtInputRePass?.text.toString()){
                     updateprofilepass()
                 }
                 else
@@ -205,39 +226,14 @@ class ProfileFragment : Fragment() {
                     dialog.setConfirmText("OK")
                     dialog.show()
                 }
-                }
+            }
             else
             {
                 updateprofilename()
             }
-
-//            val dialog = SweetAlertDialog(activity, SweetAlertDialog.WARNING_TYPE)
-//                dialog.setTitleText("Change Confirm")
-//                dialog.setContentText("Are You Sure To Change Profile?")
-//                dialog.setConfirmText("YES")
-//                dialog.showCancelButton(true)
-//                dialog.setConfirmClickListener {
-////                val intent = Intent(activity, LoginActivity::class.java)
-////                startActivity(intent)
-//
-//                }
-//                dialog.setCancelText("NO")
-//                dialog.show()
-//            }
-//            else
-//            {
-//                val dialog = SweetAlertDialog(activity, SweetAlertDialog.WARNING_TYPE)
-//                dialog.setTitleText("ERROR!")
-//                dialog.setContentText("Password field and Confirm Password Field is not the same")
-//                dialog.setConfirmText("OK")
-//                dialog.show()
-//            }
-
-
-
         }
 
-        btnLogOut!!.setOnClickListener {
+        v.btnLogout?.setOnClickListener {
             val dialog = SweetAlertDialog(activity, SweetAlertDialog.WARNING_TYPE)
             dialog.setTitleText("Logout Confirm")
             dialog.setContentText("Logout now?")
@@ -255,23 +251,5 @@ class ProfileFragment : Fragment() {
         return v
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

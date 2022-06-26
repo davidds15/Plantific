@@ -21,13 +21,11 @@ import org.json.JSONObject
 class LoginActivity : AppCompatActivity() {
     val pref = "userSession"
     val key_name = "key.name"
-    val key_email = "key.email"
     val key_id="key.id"
     lateinit var sharedPref : SharedPreferences
-    private fun saveSession(name:String,email:String,iduser:String){
+    private fun saveSession(name:String,iduser:String){
         val edit:SharedPreferences.Editor = sharedPref.edit()
         edit.putString(key_name,name)
-        edit.putString(key_email,name)
         edit.putString(key_id,iduser)
         edit.apply()
     }
@@ -35,6 +33,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.ubaya.plantific.R.layout.activity_login)
         sharedPref = getSharedPreferences(pref, Context.MODE_PRIVATE)
+        txtRegister.setOnClickListener(){
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        btnLoginTamu.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            saveSession("Guest","0")
+            startActivity(intent)
+        }
         btnLogin.setOnClickListener{
             val snackBarInvalid = Snackbar.make(it, "Email/Password Salah, Coba Lagi", Snackbar.LENGTH_SHORT).setAction("Action", null)
             val snackBarEmpty = Snackbar.make(it, "Input Kosong", Snackbar.LENGTH_SHORT).setAction("Action", null)
@@ -43,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else{
                 val q = Volley.newRequestQueue(this)
-                val url =  "http://192.168.0.103/Plantific/login.php"
+                val url =  "https://plantific.ifubaya.id/login.php"
                 var stringRequest = object : StringRequest(
                     Method.POST, url,
                     Response.Listener {
@@ -54,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                             for(i in 0 until data.length()) {
                                 var user = data.getJSONObject(i)
                                 val intent = Intent(this, MainActivity::class.java)
-                                saveSession(user.getString("name"),user.getString("email"),user.getString("idUser"))
+                                saveSession(user.getString("name"),user.getString("idUser"))
                                 startActivity(intent)
                             }
                         }
@@ -77,9 +84,5 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        txtRegister.setOnClickListener(){
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

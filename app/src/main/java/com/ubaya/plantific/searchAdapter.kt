@@ -23,7 +23,7 @@ class searchAdapter(val tanamans:ArrayList<Tanaman>): RecyclerView.Adapter<searc
 //        holder.v.txtNamaDaun.text="abc"
         holder.v?.txtNamaDaun.text = tanamans[position].namaTanaman
         holder.v.setOnClickListener{
-            val action = HomeFragmentDirections.actionhometodetail(tanamans[position].idTanaman.toString(),"0")
+            val action = SearchFragmentDirections.actionsearchtodetail(tanamans[position].idTanaman.toString(),"0")
             Navigation.findNavController(holder.v).navigate(action)
         }
     }

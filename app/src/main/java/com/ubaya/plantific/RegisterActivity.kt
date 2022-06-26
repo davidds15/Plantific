@@ -31,7 +31,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        sharedPref = getSharedPreferences(pref, Context.MODE_PRIVATE)
+//        sharedPref = getSharedPreferences(pref, Context.MODE_PRIVATE)
+        txtLogin.setOnClickListener(){
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
         btnRegister.setOnClickListener{
             val snackBarInvalid = Snackbar.make(it, "Terjadi kesalahan, silahkan coba lagi.",
                 Snackbar.LENGTH_SHORT).setAction("Action", null)
@@ -46,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             else {
                 val q = Volley.newRequestQueue(this)
-                val url =  "http://192.168.0.103/Plantific/register.php"
+                val url =  "https://plantific.ifubaya.id/register.php"
                 var stringRequest = object : StringRequest(
                     Request.Method.POST, url,
                     Response.Listener {
@@ -57,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
                             for(i in 0 until data.length()) {
                                 var user = data.getJSONObject(i)
                                 val intent = Intent(this, LoginActivity::class.java)
-                                saveSession(user.getString("name"),user.getString("email"))
+//                                saveSession(user.getString("name"),user.getString("email"))
                                 startActivity(intent)
                             }
                         }
@@ -77,7 +81,6 @@ class RegisterActivity : AppCompatActivity() {
                         params["name"] = txtInputName.text.toString()
                         params["email"] = txtInputEmailRegister.text.toString()
                         params["password"] = txtInputPassRegister.text.toString()
-                        params["repassword"] = txtInputConfPass.text.toString()
                         return params
                     }
                 }
@@ -85,9 +88,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        txtLogin.setOnClickListener(){
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 }

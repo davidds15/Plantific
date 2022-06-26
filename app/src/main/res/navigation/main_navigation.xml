@@ -18,10 +18,10 @@
             app:destination="@id/itemDetail" />
     </fragment>
     <fragment
-        android:id="@+id/itemSearch"
+        android:id="@+id/itemInfo"
         android:name="com.ubaya.plantific.SearchFragment"
         android:label="Search Plants"
-        tools:layout="@layout/fragment_search">
+        tools:layout="@layout/fragment_info">
         <action
             android:id="@+id/actToScan"
             app:destination="@id/itemScan" />

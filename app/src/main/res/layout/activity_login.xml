@@ -8,21 +8,24 @@
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardlogin"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="128dp"
         app:cardCornerRadius="27dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -30,7 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:enabled="true"
                 android:hint="Email"
@@ -57,7 +60,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
@@ -89,7 +92,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Login"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -104,30 +107,48 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="64dp"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="64dp"
                 android:backgroundTint="#00CF6A"
                 android:backgroundTintMode="screen"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Login"
+                android:text="Masuk"
                 app:cornerRadius="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+            <Button
+                android:id="@+id/btnLoginTamu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="64dp"
+                android:backgroundTint="#00a655"
+                android:backgroundTintMode="screen"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Masuk Sebagai Tamu"
+                app:cornerRadius="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="25dp"
                 android:fontFamily="@font/poppins"
-                android:text="New user? "
+                android:text="Pengguna Baru?"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/txtRegister"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+                app:layout_constraintTop_toBottomOf="@+id/btnLoginTamu"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -135,9 +156,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="101dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="25dp"
                 android:fontFamily="@font/poppins"
                 android:text="Register Now!"
                 android:textColor="#00B8D4"
@@ -145,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+                app:layout_constraintTop_toBottomOf="@+id/btnLoginTamu"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

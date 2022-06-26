@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import android.content.Intent
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.android.volley.Request
 import com.android.volley.Response
@@ -13,16 +14,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 import org.json.JSONObject
 
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class DetailFragment : Fragment() {
 
 
@@ -34,14 +32,15 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        var v=inflater.inflate(R.layout.fragment_detail, container, false)
+        return v
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
         var idtanaman=DetailFragmentArgs.fromBundle(requireArguments()).idtanaman
-        Log.d("idtanamandetail",idtanaman)
         var status=DetailFragmentArgs.fromBundle(requireArguments()).status
         Log.d("status",status)
         if(status=="0")
@@ -52,9 +51,8 @@ class DetailFragment : Fragment() {
         {
             txtdummyprediksi.visibility=View.VISIBLE
         }
-        Log.d("idtanaman",idtanaman)
         val q = Volley.newRequestQueue(this.context)
-        val url =  "http://192.168.0.103/Plantific/tanamanDetail.php"
+        val url =  "https://plantific.ifubaya.id/tanamanDetail.php"
         var stringRequest = object : StringRequest(
             Request.Method.POST, url,
             Response.Listener {
@@ -65,10 +63,8 @@ class DetailFragment : Fragment() {
                     for(i in 0 until data.length()) {
                         var data = data.getJSONObject(i)
                         txtNamaTanaman.text = data.getString("namaTanaman")
-                        txtnama2.text = data.getString("namaTanaman")
-                        txtnama3.text = data.getString("namaTanaman")
-                        txtManfaatTanaman.text = data.getString("manfaatTanaman")
-                        txtZatTanaman.text = data.getString("zatTanaman")
+                        txtmanfaat.text = data.getString("manfaatTanaman")
+                        txtZatTamaman.text = data.getString("zatTanaman")
                         val url = data.getString("img_url")
                         Picasso.get().load(url).into(imgDetail)
                     }
